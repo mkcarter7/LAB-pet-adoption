@@ -240,7 +240,27 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
-
+  const renderToDom = (divId, htmlToRender) => {
+    const selectedDiv = document.querySelector(divId);
+    selectedDiv.innerHTML = htmlToRender;
+  };
+  
+  const cardsOnDom = (array) => {
+    let domString = "";
+    for (const pet of array) {
+      domString += `<div class="card" style="width: 18rem;">
+      <img src="${pet.imageurl}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">${pet.name}</p>
+        <p class="card-text">${pet.specialSkill}</p>
+        <p class="card-text">${pet.type}</p>
+        <p class="card-text">${pet.color}</p>
+        <button class="btn btn-danger" id="delete--${pet.id}">Delete</button>
+      </div>
+    </div>`;
+    }
+    renderToDom("#app", domString);
+  }
   const app = document.querySelector("#app");
 
   let domString = "";
@@ -251,8 +271,49 @@ const pets = [
         <div class="card-body">
           <h5 class="card-title">${pet.name}</h5>
           <p class="card-text">${pet.specialSkill}</p>
+          <p class="type">${pet.type}</p>
         </div>
       </div>`;
   }
   
   app.innerHTML = domString;
+
+  const form = document.querySelector('form');
+
+function addPet(e) {
+  e.preventDefault()
+  let newPet = {
+    id: pets.length+1,
+    name: document.querySelector("#name").value,
+    color: document.querySelector("#color").value,
+    specialSkill: document.querySelector("#specialskill").value,
+    type: document.querySelector("#type").value,
+    imageUrl: document.querySelector("#image").value
+  }
+  pets.push(newPet);
+  cardsOnDom(pets)
+  form.reset()
+
+}
+form.addEventListener("submit",(e) =>{
+  e.preventDefault();
+   addPet(e);
+})
+
+// be able to click one of the 3 buttons, then only the cards that are in the category(type) should show.There should be some way for the user to unfilter the results (ie All Pets button).
+// filter function
+const filter= (pet,type) => {
+const filterPets= [pets.filter] (pet => pet.type === type);
+renderPets(filterPets);
+}
+
+//query selctor 
+document.getElementById('showBtn').addEventListener('click', () => renderPets(pets));
+  document.getElementById('dogBtn').addEventListener('click', () => renderFilterPets(pets, 'dog'));
+  document.getElementById('catBtn').addEventListener('click', () => renderFilterPets(pets, 'cat'));
+  document.getElementById('dinoBtn').addEventListener('click', () => renderFilteredPets(pets, 'dino'));
+
+// buttons for filter
+// query selector for buttons
+
+// delete pets

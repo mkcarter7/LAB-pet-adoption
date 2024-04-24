@@ -7,10 +7,49 @@
   <link rel="stylesheet" href="main.css">
   <title>Adoptable Pets</title>
 </head>
+
+<div id= "topButtons">
+<button type="button" id="dogBtn" class="btn btn-primary">Dog</button>
+<button type="button" id="catBtn" class="btn btn-secondary">Cat</button>
+<button type="button" id="dinoBtn" class="btn btn-success">Dino</button>
+<button type="button" id= "showBtn"class="btn btn-info">All Pets</button>
+</div>
+
 <body>
   <h1>Pets Available For Adoption</h1>
   
   <div id="app"></div>
+
+  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+
+<form>
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="name" placeholder="Name" required>
+    <label for="floatingInput">Name</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="color" placeholder="color" required>
+    <label for="floatingInput">Color</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="specialskill" placeholder="specialskill" required>
+    <label for="floatingInput">Special Skill</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="type" placeholder="type" required>
+    <label for="floatingInput">Type</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="url" class="form-control" id="image" placeholder="image" required>
+    <label for="floatingInput">Image</label>
+  </div>
+  <button type="submit" class="btn btn-success" id="form-submit">Add Pet</button>
+</form>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="main.js"></script>
