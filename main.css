@@ -1,7 +1,8 @@
+/* BODY STYLE */
 body {
   background-color: beige;
 }
-
+/*  PET ADOPTION PAGE HEADING*/
 h1 {
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
@@ -10,7 +11,7 @@ h1 {
   text-align: center;
   padding: 50px;
 } 
-
+/* CARDS STYLE */
 #app {
   display: flex;
   flex-flow: wrap;

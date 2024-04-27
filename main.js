@@ -1,3 +1,4 @@
+// CARD INFO
 const pets = [
     {                                             
       id: 1,
@@ -240,11 +241,19 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+// TODO REPLACE PICS IN CARDS
+// TODO ADD DELTE BUTTONS TO CARDS
+// TODO FILTER CARD BUTTONS
+// TODO CHANGE BACKGROUND COLORS
+
+
+  // RENDER TO DOM
   const renderToDom = (divId, htmlToRender) => {
     const selectedDiv = document.querySelector(divId);
     selectedDiv.innerHTML = htmlToRender;
   };
-  
+  // CARDS ON DOM
   const cardsOnDom = (array) => {
     let domString = "";
     for (const pet of array) {
@@ -300,20 +309,33 @@ form.addEventListener("submit",(e) =>{
    addPet(e);
 })
 
-// be able to click one of the 3 buttons, then only the cards that are in the category(type) should show.There should be some way for the user to unfilter the results (ie All Pets button).
-// filter function
-const filter= (pet,type) => {
-const filterPets= [pets.filter] (pet => pet.type === type);
-renderPets(filterPets);
+//FILTER FUNCTION
+function filter(array, keyword) {
+  return array.filter(item => item.includes(keyword));
 }
 
-//query selctor 
-document.getElementById('showBtn').addEventListener('click', () => renderPets(pets));
-  document.getElementById('dogBtn').addEventListener('click', () => renderFilterPets(pets, 'dog'));
-  document.getElementById('catBtn').addEventListener('click', () => renderFilterPets(pets, 'cat'));
-  document.getElementById('dinoBtn').addEventListener('click', () => renderFilteredPets(pets, 'dino'));
+  // BUTTON FILTER
+  const filterButtons = document.querySelector("#btn");
 
-// buttons for filter
-// query selector for buttons
+// EVENT LISTENERS
+filterButtons.addEventListener("click", (e) => {
+  const keyword = filter(pets, "dog");
+  cardsOnDom(keyword);
+});
+
+filterButtons.addEventListener("click", (e) => {
+  const typeString = filter(pets, "cat");
+  cardsOnDom(typeString);
+});
+
+filterButtons.addEventListener("click", (e) => {
+  const typeString = filter(pets, "pets");
+  cardsOnDom(typeString);
+});
+
+filterButtons.addEventListener("click", (e) => {
+  const typeString = filter(pets, "dino");
+  cardsOnDom(typeString);
+});
 
 // delete pets
